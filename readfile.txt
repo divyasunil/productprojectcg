@@ -1,0 +1,17 @@
+
+mkdir productlistcg
+mkvirtualenv product
+pip install django
+django-admin startproject productproject
+cd productproject
+python manage.py startapp productappcg
+python manage.py runserver
+
+py manage.py migrate
+python manage.py createsuperuser
+Usename:admin
+Email address: divyaindu13@gmail.com
+Password:12345
+
+ py manage.py makemigrations
+ py manage.py migrate
