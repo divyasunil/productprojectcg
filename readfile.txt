@@ -15,3 +15,81 @@ Password:12345
 
  py manage.py makemigrations
  py manage.py migrate
+
+*****************************************************************
+
+Python Anywhere
+username: divzmovie
+email: divyaindu13@gmail.com
+p: divyaR@13
+
+
+
+bash:
+pwd
+mkvirtualenv movietest --python=/usr/bin/python3.6
+git clone https://github.com/divyasunil/productprojectcg
+ls
+# move inside the folder where manage.py present
+cd productprojectcg
+
+pip install django
+pip install mysql-connector-python
+pip install pillow
+pip install mysqlclient
+
+create web app
+manal config
+python3.6
+
+edit WSGI configuration file:/var/www/divzmovie_pythonanywhere_com_wsgi.py
+keep only DJANGO code
+
+update path with manage.py file
+get using pwd in bash
+path = '/home/divzmovie/productprojectcg'
+get  folder of settings.py file
+os.environ['DJANGO_SETTINGS_MODULE'] = 'productproject.settings'
+save the file
+
+edit settings.py
+ALLOWED_HOSTS = ['*']
+
+Create Database
+set password : divyaCG@12345
+ set database name : moviedatabase
+
+
+sql
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'divzmovie$moviedatabase',
+        'USER': 'divzmovie',
+        'PASSWORD': 'divyaCG@12345',
+        'HOST': 'divzmovie.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+    }
+}
+
+set virtual env in webapp page
+/home/divzmovie/.virtualenvs/movietest
+
+set static file path
+/home/divzmovie/productprojectcg/static
+URL	: /static/
+Directory: /home/divzmovie/productprojectcg/static
+
+migrations
+got to ->>>  /home/divzmovie/productprojectcg/productappcg/migrations
+delete all files except __init__.py (cart & eshop)
+
+open console-->> mysql console
+mysql>show databases;
+
+in bash console
+ python manage.py makemigrations
+ python manage.py migrate
+
+python manage.py runserver 8001
+https://divyarohith.pythonanywhere.com/shop/
