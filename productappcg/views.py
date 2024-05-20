@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import MovieForm
 from productappcg.models import Movie
 
@@ -32,18 +32,29 @@ def add_movie(request):
 
 
 def update_movie(request, id):
-    movie = Movie.objects.get(id=id)
-    form = MovieForm(request.POST or None,
-                     request.FILES,
-                     instance=movie)
-    if form.is_valid():
-        form.save()
-        return redirect('/')
+    if request.method == 'POST':
+        movie = Movie.objects.get(id=id)
+        form = MovieForm(request.POST or None, request.FILES, instance=movie)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            print("Form errors:", form.errors)
+    else:
+        movie = get_object_or_404(Movie, id=id)
+        form = MovieForm(instance=movie)
     return render(request, 'update.html', {'form': form, 'movie': movie})
 
 def delete_movie(request, id):
     if request.method == "POST":
         movie = Movie.objects.get(id=id)
+        print(movie)
+        print('post')
         movie.delete()
         return redirect('/')
-    return render(request, 'delete.html')
+    else:
+        movie = get_object_or_404(Movie, id=id)
+        form = MovieForm(instance=movie)
+        print(movie)
+        print('get')
+    return render(request, 'delete.html',{'form': form, 'movie': movie})

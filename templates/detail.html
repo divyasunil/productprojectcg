@@ -2,7 +2,7 @@
 
 {% block body %}
 
-<div class="container">
+<div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
             <img src="{{movie.img.url}}" width="500" height="500">
@@ -13,12 +13,11 @@
              <h2>{{movie.year}}</h2>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-md-12">
             <a class="btn btn-warning" href="{% url 'movieapp:update_movie' movie.id %}">Update</a>
             <a class="btn btn-danger" href="{% url 'movieapp:delete_movie' movie.id %}">Delete</a>
         </div>
     </div>
 </div>
-
 {% endblock %}
